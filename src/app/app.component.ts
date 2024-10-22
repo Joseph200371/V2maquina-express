@@ -12,6 +12,7 @@ import { MaterializeModule } from 'angular2-materialize';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+
 export class AppComponent {
   title = 'Dashboard';
 }

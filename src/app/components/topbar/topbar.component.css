@@ -1,0 +1,31 @@
+/* Responsive */
+
+@container dcc (width >= 150px) and (width <= 500px) {
+    .wallet-cart-grid:has(>.wallet-cart-button-container:nth-of-type(1)):not(:has(>.wallet-cart-button-container:nth-of-type(2))) {
+        justify-content: start;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .wallet-cart-grid:has(>.wallet-cart-button-container:nth-of-type(1)):not(:has(>.wallet-cart-button-container:nth-of-type(2))) .wallet-cart-button-container {
+        width: var(--wallet-button-width-vertical);
+        height: var(--wallet-button-height-vertical);
+        margin: var(--wallet-button-container-margin-vertical);
+    }
+
+    /* Añadir reglas para otros breakpoints si es necesario */
+}
+
+@container dcc (width <= 790px) {
+    .wallet-cart-grid:has(>.wallet-cart-button-container) {
+        justify-content: start;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .wallet-cart-button-container {
+        width: var(--wallet-button-width-vertical);
+        height: var(--wallet-button-height-vertical);
+        margin: var(--wallet-button-container-margin-vertical);
+    }
+}

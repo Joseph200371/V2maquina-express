@@ -1,131 +1,169 @@
-/* Reseteo básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Responsive */
+
+@container dcc (width >= 150px) and (width <= 500px) {
+    .wallet-cart-grid:has(>.wallet-cart-button-container:nth-of-type(1)):not(:has(>.wallet-cart-button-container:nth-of-type(2))) {
+        justify-content: start;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .wallet-cart-grid:has(>.wallet-cart-button-container:nth-of-type(1)):not(:has(>.wallet-cart-button-container:nth-of-type(2))) .wallet-cart-button-container {
+        width: var(--wallet-button-width-vertical);
+        height: var(--wallet-button-height-vertical);
+        margin: var(--wallet-button-container-margin-vertical);
+    }
+
+    /* Añadir reglas para otros breakpoints si es necesario */
 }
 
-/* Variables CSS para colores y tamaños */
-:root {
-    --primary-color: #2980b9; /* Color principal */
-    --secondary-color: #27ae60; /* Color para incrementos */
-    --warning-color: #c0392b; /* Color para decrementos */
-    --background-color: #f4f4f4; /* Color de fondo */
-    --card-background: #fff; /* Color de fondo de las tarjetas */
-    --text-color: #333; /* Color del texto */
-    --subtle-text-color: #555; /* Color del texto sutil */
-    --font-family: 'Times New Roman', serif; /* Fuente */
+@container dcc (width <= 790px) {
+    .wallet-cart-grid:has(>.wallet-cart-button-container) {
+        justify-content: start;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .wallet-cart-button-container {
+        width: var(--wallet-button-width-vertical);
+        height: var(--wallet-button-height-vertical);
+        margin: var(--wallet-button-container-margin-vertical);
+    }
 }
 
-/* Estilos del body */
-body {
-    font-family: var(--font-family);
-    background-color: var(--background-color);
-    color: var(--text-color);
-}
+/* Layout */
 
-/* Contenedor principal */
-.container {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Estilo de diseño de mampostería */
-.masonry {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-/* Estilo para encabezados */
-.summary-title {
-    font-size: 75px; /* Ajustar tamaño de fuente para el título */
-    text-align: center;
-    margin-bottom: 20px;
-    color: var(--primary-color);
-}
-
-/* Estilo para las tarjetas */
-.card {
-    background-color: var(--card-background);
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25); /* Sombra más pronunciada al pasar el mouse */
-}
-
-.card-stacked {
-    padding: 15px;
-}
-
-.card-metric {
-    margin-bottom: 15px;
-}
-
-.card-metric-title {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.card-metric-value {
-    font-size: 24px;
-    color: #2c3e50;
-}
-
-.card-metric-change {
-    display: flex;
-    align-items: center;
-}
-
-.card-metric-change.increase {
-    color: var(--secondary-color);
-}
-
-.card-metric-change.decrease {
-    color: var(--warning-color);
-}
-
-.card-chart {
-    position: relative;
-    height: 100px;
-}
-
-/* Estilo para la sección de ganancias y producto más vendido */
-.card-metrics-toggle {
-    display: flex;
-    justify-content: space-around;
-    padding: 20px;
-    background-color: #ecf0f1;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-.card-metric.waves-effect {
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.card-metric.waves-effect:hover {
-    background-color: #bdc3c7;
-}
-
-/* Media Queries para Responsividad */
-@media (max-width: 768px) {
-    .masonry {
+@supports (not (container-type: inline-size)) or (not (selector(:has(*)))) {
+    .wallet-cart-button-container:first-child,
+    .wallet-cart-grid {
+        margin-top: 8px;
+        justify-content: start;
         flex-direction: column;
     }
+}
 
-    .summary-title {
-        font-size: 36px; /* Ajustar tamaño de fuente en pantallas pequeñas */
-    }
+#dynamic-checkout-cart {
+    container-type: inline-size;
+    container-name: dcc;
+    width: 100%;
+}
 
-    .card-metric-value {
-        font-size: 20px; /* Ajustar tamaño de valor en pantallas pequeñas */
+.wallet-cart-grid {
+    margin: var(--wallet-grid-margin-horizontal);
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: var(--shopify-accelerated-checkout-inline-alignment, start);
+    gap: 0 !important;
+}
+
+.additional-checkout-buttons--vertical .wallet-cart-grid {
+    flex-direction: column;
+    margin: 0;
+}
+
+@media screen and (max-width: 750px) {
+    .wallet-cart-grid {
+        max-width: none;
+        margin: 0;
     }
+}
+
+@container dcc (width >=150px) and (width <=790px) {
+    .wallet-cart-grid:has(>.wallet-cart-button-container) {
+        .wallet-cart-button-container:first-child {
+            margin-top: 8px;
+        }
+    }
+}
+
+/* Buttons */
+
+.wallet-cart-grid {
+    --wallet-button-height-horizontal: clamp(25px, var(--shopify-accelerated-checkout-button-inline-size, 42px), 55px);
+    --wallet-button-height-vertical: clamp(25px, var(--shopify-accelerated-checkout-button-block-size, 54px), 55px);
+    --wallet-button-width-horizontal: 150px;
+    --wallet-button-width-vertical: 100%;
+    --wallet-button-border-radius: var(--shopify-accelerated-checkout-button-border-radius, 4px);
+}
+
+.wallet-cart-button-container {
+    position: relative;
+    margin: var(--wallet-button-container-margin-horizontal);
+}
+
+.wallet-cart-button-container,
+.wallet-cart-button {
+    width: var(--wallet-button-width-horizontal);
+    height: var(--wallet-button-height-horizontal);
+    border-radius: var(--wallet-button-border-radius);
+    list-style-type: none;
+    text-align: center;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.additional-checkout-buttons--vertical .wallet-cart-button-container {
+    width: var(--wallet-button-width-vertical);
+    height: var(--wallet-button-height-vertical);
+    margin: var(--wallet-button-container-margin-vertical);
+}
+
+.additional-checkout-buttons--horizontal .wallet-cart-button-container,
+.additional-checkout-buttons--horizontal .wallet-cart-button {
+    width: var(--wallet-button-width-horizontal);
+    height: var(--wallet-button-height-horizontal);
+    border-radius: var(--wallet-button-border-radius);
+}
+
+@media screen and (max-width: 750px) {
+    .wallet-cart-grid .wallet-cart-button-container:first-child {
+        margin-top: 8px;
+    }
+}
+
+/* Animations */ 
+
+@keyframes acceleratedCheckoutLoadingSkeleton {
+    50% {
+        opacity: var(--shopify-accelerated-checkout-skeleton-animation-opacity-start, 1);
+    }
+    75% {
+        opacity: var(--shopify-accelerated-checkout-skeleton-animation-opacity-end, 0.5);
+    }
+    100% {
+        opacity: var(--shopify-accelerated-checkout-skeleton-animation-opacity-start, 1);
+    }
+}
+
+.wallet-cart-button__skeleton {
+    animation: acceleratedCheckoutLoadingSkeleton var(--shopify-accelerated-checkout-skeleton-animation-duration, 4s) var(--shopify-accelerated-checkout-skeleton-animation-timing-function, ease) infinite;
+    animation-delay: -0.168s;
+    background-color: var(--shopify-accelerated-checkout-skeleton-background-color, #dedede);
+    box-sizing: border-box;
+    text-decoration: none !important;
+}
+
+/* Animación de renderizado para gráficos de Chart.js */
+@-webkit-keyframes chartjs-render-animation {
+    from {
+        opacity: 0.99; /* Comienza casi invisible */
+    }
+    to {
+        opacity: 1; /* Termina completamente visible */
+    }
+}
+
+@keyframes chartjs-render-animation {
+    from {
+        opacity: 0.99; /* Comienza casi invisible */
+    }
+    to {
+        opacity: 1; /* Termina completamente visible */
+    }
+}
+
+/* Aplicar la animación de renderizado a elementos de Chart.js */
+.chartjs-render-monitor {
+    -webkit-animation: chartjs-render-animation 0.2s; /* Duración más notable */
+    animation: chartjs-render-animation 0.2s; /* Duración más notable */
 }
