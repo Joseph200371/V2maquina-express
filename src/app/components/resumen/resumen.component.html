@@ -1,8 +1,25 @@
 <main>
+  <!--<div class="container">
+    <div class="row my-4">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-hearder">
+            <div class="card-title"> mi primer grafico</div>
+          </div>
+          <div class="card-body">
+            <div style="text-align:center">
+              <apx-chart [series]="chartOptions.series!" [chart]="chartOptions.chart!" [xaxis]="chartOptions.xaxis!"
+                [title]="chartOptions.title!"></apx-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>-->
   <div class="container">
     <div class="masonry row" style="position: relative; height: 2027.69px;">
       <div class="col s12" style="position: absolute; left: 0px; top: 0px;">
-        <h2>Resumen</h2>
+        <h2 style="font-size: 75px; font-family:'Times New Roman';">Resumen</h2>
       </div>
       <div class="col l3 m6 s12" style="position: absolute; left: 0px; top: 115px;">
 
@@ -10,8 +27,8 @@
           <div class="card-stacked">
             <div class="card-metrics card-metrics-static">
               <div class="card-metric">
-                <div class="card-metric-title">Ganancia</div>
-                <div class="card-metric-value">$12,476.00</div>
+                <div class="card-metric-title" style="font-family: 'Times New Roman';">Ganancia</div>
+                <div class="card-metric-value" style="font-family: 'Times New Roman';">$12,476.00</div>
                 <div class="card-metric-change increase">
                   <i class="material-icons left">keyboard_arrow_up</i>
                   12%
@@ -43,8 +60,8 @@
           <div class="card-stacked">
             <div class="card-metrics card-metrics-static">
               <div class="card-metric">
-                <div class="card-metric-title">Clicks</div>
-                <div class="card-metric-value">11,893</div>
+                <div class="card-metric-title" style="font-family: 'Times New Roman';">Clicks</div>
+                <div class="card-metric-value" style="font-family: 'Times New Roman';">11,893</div>
                 <div class="card-metric-change increase">
                   <i class="material-icons left">keyboard_arrow_up</i>
                   8%
@@ -76,8 +93,8 @@
           <div class="card-stacked">
             <div class="card-metrics card-metrics-static">
               <div class="card-metric">
-                <div class="card-metric-title">Usuarios</div>
-                <div class="card-metric-value">230,648</div>
+                <div class="card-metric-title" style="font-family: 'Times New Roman';">Usuarios</div>
+                <div class="card-metric-value" style="font-family: 'Times New Roman';">230,648</div>
                 <div class="card-metric-change decrease">
                   <i class="material-icons left">keyboard_arrow_down</i>
                   2%
@@ -169,6 +186,12 @@
             </div>-->
           </div>
           <div class="card-content">
+            <apx-chart
+                [series]="chartOptions.series!"
+                [chart]="chartOptions.chart!"
+                [xaxis]="chartOptions.xaxis!"
+                [title]="chartOptions.title!"
+              ></apx-chart>
             <div class="chartjs-size-monitor"
               style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
               <div class="chartjs-size-monitor-expand"
@@ -184,7 +207,6 @@
               style="display: block; width: 771px; height: 400px;"></canvas>
           </div>
         </div>
-
       </div>
       <!--
       <div class="col m6 s12" style="position: absolute; left: 0px; top: 970px;">
