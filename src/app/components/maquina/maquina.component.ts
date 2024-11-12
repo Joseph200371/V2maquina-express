@@ -17,12 +17,15 @@ export class MaquinaComponent implements OnInit{
   a:any; 
   maquina: Maquina= {
     id: 0,
-    alias: '',
+    alias_name: '',
     descripcion: '',
     modelo: '',
     marca: '',
     estado: '',
-    url: ''
+    url: '',
+    tipo:'',
+    colaMQ: '',
+    productos: []
   };
 
 
@@ -33,15 +36,16 @@ export class MaquinaComponent implements OnInit{
       $('.modal').modal();
     });
      
-     this.service.findAll().subscribe(listmaquina => this.a);
+    this.service.findAll().subscribe(listmaquina => this.a);
     console.log(this.a)
   }
 
   ngOnInit(): void {
-    this.service.listmaquinas().subscribe(listmaquina=> this.listmaquina = listmaquina );
-    this.service.findbyId(1).subscribe(maquina=> this.maquina= maquina);
-    console.log("En este instante el componente ha cargado" + this.listmaquina);
+    this.service.findAll().subscribe(listmaquina=> this.listmaquina=listmaquina);
+    console.log("En este instante el componente ha cargado" + this.a);
     console.log("En este instante el componente ha cargado" + this.maquina.id);
+    /*this.service.findAll().subscribe(listmaquina => this.a);
+    console.log(this.a)*/
   }
   
 }

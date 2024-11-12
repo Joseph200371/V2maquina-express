@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Maquina } from '../models/maquina';
 import { Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,30 +12,39 @@ export class MaquinaService {
   private maquinas: Maquina[]=[
     {
       id:1,
-      alias:"Arregui 524-1",
+      alias_name:"Arregui 524-1",
       descripcion:"maquina comidas organicas " ,
       modelo:"ABX 524",
       marca:"Philips",
       estado:"Encendida",
-      url:""
+      url:"",
+      tipo:'',
+      colaMQ: '',
+      productos: []
     },
     {
       id:2,
-      alias:"Lincond 2547-1",
+      alias_name:"Lincond 2547-1",
       descripcion:"maquina golosinas-galletitas-aperitivos" ,
       modelo:"ABX 524",
       marca:"Philips",
       estado:"Encendida",
-      url:""
+      url:"",
+      tipo:'',
+      colaMQ: '',
+      productos: []
     },
     {
       id:3,
-      alias:"UADE 9-de-julio 3B",
+      alias_name:"UADE 9-de-julio 3B",
       descripcion:"maquina bebidas lata" ,
       modelo:"C124 ",
       marca:"General Electric",
       estado:"Encendida",
-      url:""
+      url:"",
+      tipo:'',
+      colaMQ: '',
+      productos: []
     }
 
   ];
@@ -47,12 +56,15 @@ export class MaquinaService {
     var lista : Maquina[]= [];
     this.maquinas.forEach(maquina => lista.push({
       id:maquina.id,
-      alias:maquina.alias,
+      alias_name:maquina.alias_name,
       descripcion:"",
       modelo:"",
       marca:"",
       estado:"",
-      url:""}));
+      url:"",
+      tipo:'',
+      colaMQ: '',
+      productos: []}));
     return of(lista);
 
     
@@ -63,8 +75,18 @@ export class MaquinaService {
     return of(maquina);
   }
 
+  
+   
+
   findAll(){
-    return this.http.get("localhost:8090/api/maquina");
+    const headers = new HttpHeaders();                
+    headers.set('Content-Type','application/json')      
+    .set('Access-Control-Allow-Origin', '*')   
+    .set("Access-Control-Max-Age","3600")   
+    .set("Access-Control-Allow-Headers"," Origin, X-Requested-With, Content-Type, Accept, Authorization");   
+
+
+    return this.http.get<Maquina[]>("http://localhost:8090/api/maquina/all",{'headers':headers});
   }
   
 
