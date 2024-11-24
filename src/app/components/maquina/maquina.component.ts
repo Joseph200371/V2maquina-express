@@ -27,10 +27,8 @@ export class MaquinaComponent implements OnInit{
     colaMQ: '',
     productos: []
   };
-
-
-
-
+ 
+  
   constructor(private service: MaquinaService){
     $(document).ready(function(){
       $('.modal').modal();

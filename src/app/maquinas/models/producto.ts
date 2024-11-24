@@ -1,9 +1,10 @@
 
 export class Producto{
     id!:number;
-    nombre!:string ;
+    producto!:string ;
     descripcion!:string ;
     precio!:number ;
     cantidad!:number ;
     fechavencimiento!:Date;
+    imagen!:String;
 }

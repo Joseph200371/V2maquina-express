@@ -1,13 +1,15 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Maquina } from '../models/maquina';
 import { Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MaquinaService {
   [x: string]: any;
+
+  private http = inject(HttpClient);
 
   private maquinas: Maquina[]=[
     {
@@ -50,7 +52,7 @@ export class MaquinaService {
   ];
 
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
   //cambiar por url spring
   listmaquinas(): Observable<Maquina[]>{
     var lista : Maquina[]= [];
@@ -79,14 +81,10 @@ export class MaquinaService {
    
 
   findAll(){
-    const headers = new HttpHeaders();                
-    headers.set('Content-Type','application/json')      
-    .set('Access-Control-Allow-Origin', '*')   
-    .set("Access-Control-Max-Age","3600")   
-    .set("Access-Control-Allow-Headers"," Origin, X-Requested-With, Content-Type, Accept, Authorization");   
 
 
-    return this.http.get<Maquina[]>("http://localhost:8090/api/maquina/all",{'headers':headers});
+
+    return this.http.get<Maquina[]>("http://localhost:8090/api/maquina/all");
   }
   
 

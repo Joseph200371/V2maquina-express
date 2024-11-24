@@ -33,14 +33,14 @@ export class LoginComponent {
     this.userSrv.onLogin(usrb).subscribe((res:any)=> {
       console.log("hola" + res)
       if(res.result) {
-        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('token', res.token);
         this.router.navigateByUrl('/dashboard');
       } else {
         alert(res.message)
       }
     },error=>{(error:any)=>
       console.log("hola" + error)
-      alert("Wrong Credentials")
+      alert(error.error.message)
     })
   }
 }

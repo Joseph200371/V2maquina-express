@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProductComponent } from './components/product/product.component';
+import { authGuard } from './custom/auth.guard';
 
 export const routes: Routes = [
     {path : 'login', component: LoginComponent},
@@ -12,9 +13,9 @@ export const routes: Routes = [
     {
         path: 'dashboard', component : DashboardComponent, 
         children:[
-            {path : '' , component : LogoComponent},
-            {path : 'maquina/:id', component : ResumenComponent},
-            {path : 'maquina/:id/producto', component : ProductComponent}
+            {path : '' , component : LogoComponent,canActivate:[authGuard]},
+            {path : 'maquina/:id', component : ResumenComponent,canActivate:[authGuard]},
+            {path : 'maquina/:id/producto', component : ProductComponent,canActivate:[authGuard]}
         ]
     }
 
