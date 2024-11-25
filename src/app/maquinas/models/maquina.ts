@@ -1,3 +1,5 @@
+import { Producto } from "./producto";
+
 export class Maquina{
     id!:number;
     alias_name!:string ;
@@ -8,5 +10,8 @@ export class Maquina{
     url!:string;
     tipo!:string;
     colaMQ!: string;
-    productos!: any;
+    productos!: Array<Producto>;
+    direccion!:string;
+    longitud!:string;
+    latitud!:string;
 }

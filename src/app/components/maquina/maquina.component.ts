@@ -25,8 +25,12 @@ export class MaquinaComponent implements OnInit{
     url: '',
     tipo:'',
     colaMQ: '',
-    productos: []
+    productos: [],
+    direccion:'',
+    longitud:'',
+    latitud:'',
   };
+  
  
   
   constructor(private service: MaquinaService){

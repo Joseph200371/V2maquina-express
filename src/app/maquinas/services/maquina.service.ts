@@ -12,6 +12,7 @@ export class MaquinaService {
   private http = inject(HttpClient);
 
   private maquinas: Maquina[]=[
+    /*
     {
       id:1,
       alias_name:"Arregui 524-1",
@@ -47,7 +48,7 @@ export class MaquinaService {
       tipo:'',
       colaMQ: '',
       productos: []
-    }
+    }*/
 
   ];
 
@@ -66,7 +67,11 @@ export class MaquinaService {
       url:"",
       tipo:'',
       colaMQ: '',
-      productos: []}));
+      productos: [],
+      direccion:'', 
+      longitud:'', 
+      latitud:''
+    }));
     return of(lista);
 
     
@@ -81,9 +86,6 @@ export class MaquinaService {
    
 
   findAll(){
-
-
-
     return this.http.get<Maquina[]>("http://localhost:8090/api/maquina/all");
   }
   
