@@ -1,79 +1,98 @@
 <div class="card">
     <div class="card-metrics card-metrics-toggle card-metrics-centered">
         <div class="row">
+            <div class="input-field col s2" >
+                <img height="100px" src="{{image}}">
+                <input #imageInput
+                                type="file"
+                                accept="image/*"
+                                (change)="onselectFile($event)" style="color: transparent">
+            </div>
+
+
+
             <div class="input-field col s4">
-                <input id="nombre_producto" type="text" class="validate">
-                <label class="active" for="nombre_producto">Nombre producto</label>
+                <input value="{{input.producto}}" [(ngModel)]="Formproducto" id="first_name2" type="text" class="validate">
+                <label class="active" for="first_name2">Nombre producto</label>
+            </div>
+
+            <div class="input-field col s1">
+                <input value="{{input.precio}}" [(ngModel)]="Formprecio" id="first_name2" type="text" class="validate">
+                <label class="active" for="first_name2">Precio</label>
             </div>
 
             <div class="input-field col s2">
-                <input id="precio_producto" type="text" class="validate">
-                <label class="active" for="precio_producto">Precio</label>
+                <input value="{{input.cantidad}}" [(ngModel)]="Formcantidad" id="first_name2" type="text" class="validate">
+                <label class="active" for="first_name2">Cantidad</label>
             </div>
 
-            <div class="input-field col s2">
-                <input id="cantidad_producto" type="text" class="validate">
-                <label class="active" for="cantidad_producto">Cantidad</label>
-            </div>
+
+            
 
             <div class="input-field col s2">
-                <input id="imagen_producto" type="text" class="validate">
-                <label class="active" for="imagen_producto">Imagen</label>
-            </div>
-
-            <div class="input-field col s2">
-                <input id="fecha_vencimiento" type="text" class="validate" placeholder="dd/mm/yyyy">
-                <label class="active" for="fecha_vencimiento">Fecha de vencimiento</label>
+                <input value="{{input.fechavencimiento | date :'dd/MM/yyyy' }}" [(ngModel)]="Formfechavencimiento " id="first_name2" type="text" class="validate">
+                <label class="active" for="first_name2">fecha vencimiento</label>
             </div>
 
             <div class="col s1">
-                <button class="btn waves-effect waves-light z-depth-5" type="submit" name="action">Guardar
-                    <i class="material-icons right">send</i>
+                <button class="btn waves-effect waves-light z-depth-5" (click)="submit()" name="action">Save
+                    <i class="material-icons">send</i>
                 </button>
             </div>
+
         </div>
     </div>
 </div>
-
 <div>
     @if (listproducto.length > 0) {
-        @for (producto of listproducto; track $index) {
-            <div class="card">
-                <div class="card-metrics card-metrics-toggle card-metrics-centered">
-                    <div class="row">
-                        <div class="input-field col s4">
-                            <input value="{{producto.nombre}}" id="nombre_producto_{{ $index }}" type="text" class="validate">
-                            <label class="active" for="nombre_producto_{{ $index }}">Nombre</label>
-                        </div>
+    @for (producto of listproducto; track $index){
+    <div class="card">
+        <div class="card-metrics card-metrics-toggle card-metrics-centered">
+            <div class="row">
+                <div class="input-field col s2">
+                    <img height="60px" 
+                    src="../../../assets/{{producto.imagen}}" />
 
-                        <div class="input-field col s2">
-                            <input value="{{producto.precio}}" id="precio_producto_{{ $index }}" type="text" class="validate">
-                            <label class="active" for="precio_producto_{{ $index }}">Precio</label>
-                        </div>
-
-                        <div class="input-field col s2">
-                            <input value="{{producto.cantidad}}" id="cantidad_producto_{{ $index }}" type="text" class="validate">
-                            <label class="active" for="cantidad_producto_{{ $index }}">Cantidad</label>
-                        </div>
-
-                        <div class="input-field col s2">
-                            <input value="" id="imagen_producto_{{ $index }}" type="text" class="validate">
-                            <label class="active" for="imagen_producto_{{ $index }}">Imagen</label>
-                        </div>
-
-                        <div class="input-field col s2">
-                            <input value="{{producto.fechavencimiento | date :'dd/MM/yyyy'}}" id="fecha_vencimiento_{{ $index }}" type="text" class="validate">
-                            <label class="active" for="fecha_vencimiento_{{ $index }}">Fecha de vencimiento</label>
-                        </div>
-
-                        <div class="col s1">
-                            <button class="btn waves-effect waves-light z-depth-5" type="button " name="action">Editar
-                                <i class="material-icons right">editar</i>
-                            </button>
-                        </div>
-                    </div>
                 </div>
+
+                <div class="input-field col s3">
+                    <input value="{{producto.producto}}" id="first_name2" type="text" class="validate">
+                    <label class="active" for="first_name2">Nombre</label>
+                </div>
+
+                <div class="input-field col s1">
+                    <input value="{{producto.precio}}" id="first_name2" type="text" class="validate">
+                    <label class="active" for="first_name2">precio</label>
+                </div>
+
+                <div class="input-field col s2">
+                    <input value={{producto.cantidad}} id="first_name2" type="text" class="validate">
+                    <label class="active" for="first_name2">cantidad</label>
+                </div>
+
+
+                
+
+                <div class="input-field col s2">
+                    <input value="{{producto.fechavencimiento | date :'dd/MM/yyyy'}}" id="first_name2" type="text" class="validate">
+                    <label class="active" for="first_name2">Fecha De vencimiento</label>
+                </div>
+
+                <div class="input-field col s1">
+                    <button class="btn waves-effect waves-light z-depth-5" type="submit" name="action">
+                        <i class="material-icons">edit</i>
+                    </button>
+                </div>
+                <div class="input-field col s1">
+                    <button class="btn waves-effect waves-light z-depth-5" type="submit" name="action">
+                        <i class="material-icons">delete</i>
+                    </button>
+                </div>
+
             </div>
-        }
-    }
+        </div>
+
+    </div>
+}
+}
 </div>

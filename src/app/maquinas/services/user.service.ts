@@ -32,11 +32,18 @@ export class UserService {
     headers.set('Content-Type','application/json');   
     headers.set('Content-Type','application/json');          
                       */
-                  
-    return this.http.post("http://localhost:8090/login", obj, {'headers':{'Content-Type':'application/json',
-      'Access-Control-Allow-Origin': '*',
-      "Access-Control-Max-Age":"3600",
-      "Access-Control-Allow-Headers":" Origin, X-Requested-With, Content-Type, Accept, Authorization"}} )
+    const headers = new HttpHeaders();                
+    headers.set('Content-Type','application/json'); 
+    /*.set('Content-Type','application/json')   
+    .set('Access-Control-Allow-Origin', '*')   
+    .set("Access-Control-Max-Age","3600")
+    .set("X-Requested-With","XMLHttpRequests")
+    .set("Origin","http://localhost:4200") 
+    .set("Access-Control-Allow-Headers"," Origin, X-Requested-With, Content-Type, Accept, Authorization");*/               
+
+    return this.http.post<String>("http://192.168.1.225:8090/login", obj ,{ "headers" : headers })
+
+    
   }
 
   getRefreshToken()   {
