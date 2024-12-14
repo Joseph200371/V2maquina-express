@@ -1,34 +1,4 @@
-/* Estilo general para el sidenav */
 .sidenav {
-    background-color: #448AFF; /* Color de fondo */
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra */
-}
-
-/* Estilo para los encabezados colapsables */
-.sidenav .collapsible-header {
-    padding: 10px 15px; /* Espaciado */
-    color: #ffffff; /* Color del texto */
-    transition: background-color 0.3s; /* Transición suave */
-}
-
-/* Color de fondo al pasar el mouse sobre el encabezado colapsable */
-.sidenav .collapsible-header:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Color de fondo al pasar el mouse */
-}
-
-/* Estilo para el cuerpo colapsable */
-.sidenav .collapsible-body {
-    padding-left: 20px; /* Espaciado izquierdo para el contenido colapsable */
-}
-
-/* Estilo para los enlaces dentro del cuerpo colapsable */
-.sidenav .collapsible-body .waves-effect {
-    padding: 10px 15px; /* Espaciado */
-    color: #ffffff; /* Color del texto */
-    transition: background-color 0.3s; /* Transición suave */
-}
-
-/* Color de fondo al pasar el mouse sobre los enlaces */
-.sidenav .collapsible-body .waves-effect:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Color de fondo al pasar el mouse */
+    box-shadow: none;
+    background-color: #448AFF;
 }

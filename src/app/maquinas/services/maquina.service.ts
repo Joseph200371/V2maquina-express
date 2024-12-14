@@ -1,7 +1,7 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Maquina } from '../models/maquina';
 import { Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class MaquinaService {
   [x: string]: any;
 
-  private http = inject(HttpClient);
-
   private maquinas: Maquina[]=[
-    /*
     {
       id:1,
       alias_name:"Arregui 524-1",
@@ -48,12 +45,12 @@ export class MaquinaService {
       tipo:'',
       colaMQ: '',
       productos: []
-    }*/
+    }
 
   ];
 
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
   //cambiar por url spring
   listmaquinas(): Observable<Maquina[]>{
     var lista : Maquina[]= [];
@@ -67,11 +64,7 @@ export class MaquinaService {
       url:"",
       tipo:'',
       colaMQ: '',
-      productos: [],
-      direccion:'', 
-      longitud:'', 
-      latitud:''
-    }));
+      productos: []}));
     return of(lista);
 
     
@@ -86,7 +79,14 @@ export class MaquinaService {
    
 
   findAll(){
-    return this.http.get<Maquina[]>("http://localhost:8090/api/maquina/all");
+    const headers = new HttpHeaders();                
+    headers.set('Content-Type','application/json')      
+    .set('Access-Control-Allow-Origin', '*')   
+    .set("Access-Control-Max-Age","3600")   
+    .set("Access-Control-Allow-Headers"," Origin, X-Requested-With, Content-Type, Accept, Authorization");   
+
+
+    return this.http.get<Maquina[]>("http://localhost:8090/api/maquina/all",{'headers':headers});
   }
   
 

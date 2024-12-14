@@ -42,16 +42,3 @@ figcaption, figure, main {
 *, *:before, *:after {
     box-sizing: inherit;
 }
-/* ----------------------------*/
-.sidenav-container {
-    height: 100%;
-  }
-  
-  mat-sidenav {
-    width: 250px;
-  }
-  
-  main {
-    padding: 20px;
-  }
-  

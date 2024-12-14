@@ -25,14 +25,12 @@ export class MaquinaComponent implements OnInit{
     url: '',
     tipo:'',
     colaMQ: '',
-    productos: [],
-    direccion:'',
-    longitud:'',
-    latitud:'',
+    productos: []
   };
-  
- 
-  
+
+
+
+
   constructor(private service: MaquinaService){
     $(document).ready(function(){
       $('.modal').modal();
